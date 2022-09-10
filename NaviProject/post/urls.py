@@ -1,6 +1,4 @@
-import typing
-
-from django.urls import URLPattern, URLResolver, path
+from django.urls import path
 
 from NaviProject.post.views import (
     DislikeCreateAPIView,
@@ -9,10 +7,7 @@ from NaviProject.post.views import (
     PostCreateAPIView,
 )
 
-URL = typing.Union[URLPattern, URLResolver]
-URLList = typing.List[URL]
-
-urlpatterns: URLList = [
+urlpatterns = [
     path("", PostCreateAPIView.as_view()),
     path("like/", LikeCreateAPIView.as_view()),
     path("dislike/", DislikeCreateAPIView.as_view()),

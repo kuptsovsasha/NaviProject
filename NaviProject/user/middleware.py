@@ -4,6 +4,9 @@ from .models import User
 
 
 class UpdateLastActivityMiddleware(object):
+    """custom middleware which always update user activity in
+    custom user model fild """
+
     def __init__(self, get_response):
         self.get_response = get_response
 

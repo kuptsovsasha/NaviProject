@@ -12,6 +12,7 @@ LIKES_BY_USER = env("LIKES_BY_USER")
 
 
 def create_mock_data():
+    """create test data on platform uses param's from env file """
 
     users = []
     for _ in range(int(USERS_NUM)):

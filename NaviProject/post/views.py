@@ -1,12 +1,7 @@
-from django.db.models import CharField, Count, F, Value
+from django.db.models import CharField, Count, Value
 from django.db.models.functions import Concat, Extract
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions
-
-# Create your views here.
-from rest_framework.filters import OrderingFilter
-from rest_framework.response import Response
 
 from .filters import LikesAnalyticsFilters
 from .models import Like
@@ -16,6 +11,9 @@ from .serializers import (
     LikesAnalyticsSerializer,
     PostCreateSerializer,
 )
+
+
+# Create your views here.
 
 
 class PostCreateAPIView(generics.CreateAPIView):
@@ -43,6 +41,7 @@ class DislikeCreateAPIView(generics.CreateAPIView):
 
 
 class LikesAnalyticsListView(generics.ListAPIView):
+    """return list with likes object grouped by day"""
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = LikesAnalyticsSerializer
     filter_backends = (DjangoFilterBackend,)

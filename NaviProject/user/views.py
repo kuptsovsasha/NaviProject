@@ -57,6 +57,7 @@ user_id = openapi.Parameter(
 @api_view(("GET",))
 @permission_classes((permissions.IsAuthenticated,))
 def get_user_activity(request, *args, **kwargs):
+    """return last user activity by user id"""
     user_id = request.GET.get("user_id", None)
     user = User.objects.filter(id=user_id).last()
     if user:

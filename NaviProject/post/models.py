@@ -40,7 +40,7 @@ class Like(models.Model):
         return super().save(*args, **kwargs)
 
     def check_existed_dislike(self):
-        """Checks if current user already set dislike for current post"""
+        """Checks if current user already set dislike for current post and delete if exist"""
         dislike = Dislike.objects.filter(post=self.post, user=self.user).last()
         if dislike:
             dislike.delete()
@@ -68,7 +68,7 @@ class Dislike(models.Model):
         return super().save(*args, **kwargs)
 
     def check_existed_like(self):
-        """Checks if current user already set like for current post"""
+        """"Checks if current user already set like for current post and delete if exist"""
         like = Like.objects.filter(post=self.post, user=self.user).last()
         if like:
             like.delete()

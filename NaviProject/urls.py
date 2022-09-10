@@ -1,7 +1,5 @@
-import typing
-
 from django.contrib import admin
-from django.urls import URLPattern, URLResolver, include, path
+from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
@@ -21,10 +19,7 @@ swagger_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-URL = typing.Union[URLPattern, URLResolver]
-URLList = typing.List[URL]
-
-urlpatterns: URLList = [
+urlpatterns = [
     path(
         "", swagger_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"
     ),
