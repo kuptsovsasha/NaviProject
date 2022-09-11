@@ -28,7 +28,3 @@ def create_mock_data():
         user = random.choice(users)
         post = random.choice(posts)
         LikeFactory(user=user, post=post)
-
-
-if __name__ == "__main__":
-    create_mock_data()
